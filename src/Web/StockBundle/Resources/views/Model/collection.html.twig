@@ -1,0 +1,59 @@
+{% extends "WebStockBundle::layout.html.twig" %}
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            {% for entity in entities %}
+            <div class="col-xs-12 col-sm-12 col-md-4 text-center">
+                <div>
+                    <a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}">
+                        {{ render(controller('AntMediaBundle:Gallery:thumb', { 'id': entity.gallery|sonata_urlsafeid } )) }}
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}">
+                        <h4>{{ entity.name }}</h4>
+                    </a>
+                    <div class="priceList">
+                        {{ entity.costRub }} р.
+                        <a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}" class="cart"><i class="fa fa-shopping-cart"></i></a></div>
+                </div>
+            </div>
+           {% endfor %}
+        </div>
+        <div class="row">
+            <h3 class="text-center section">О марке</h3>
+            <p>Элегантное черное пончо из кашемира. Очень нежное и легкое, состав из кашемира не царапает и не колет кожу.</p>
+            <p>Пончо сделано из натуральной итальянской пряжи. В ее составе 70% кашемира и 30% шелка.</p>
+        </div>
+
+        <div class="row">
+            <h3 class="text-center section">Отзывы о нас</h3>
+            <div class="col-sm-3">
+                <h4>Лаура Блэк</h4>
+                <p class="text-muted">Лос Анжелес, США</p>
+                <div class="media-body"><p>
+                        Отличное пончо! Мне идеально подошло. Буду носить не снимая
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h4>Лаура Блэк</h4>
+                <p class="text-muted">Лос Анжелес, США</p>
+                <div class="media-body"><p>
+                        Отличное пончо! Мне идеально подошло. Буду носить не снимая
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h4>Лаура Блэк</h4>
+                <p class="text-muted">Лос Анжелес, США</p>
+                <div class="media-body"><p>
+                        Отличное пончо! Мне идеально подошло. Буду носить не снимая
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

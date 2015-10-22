@@ -1,0 +1,19 @@
+menu:
+     collection: Коллекция
+     delivery: Доставка и оплата
+     return: Обмен и возврат
+     about: О марке
+     cart: Корзина
+     order: Сделать заказ
+
+sylius:
+     cart:
+        summary:
+            product: Продукт
+            unit_price: Стоимость
+            grand_total: Итого
+            save: Сохранить
+            clear: Очистить корзину
+        summary_header: У вас в корзине замечательные вещи
+
+write_us_for_order: Напишите нам для заказа

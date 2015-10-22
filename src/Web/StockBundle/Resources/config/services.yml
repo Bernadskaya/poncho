@@ -1,0 +1,61 @@
+services:
+#    web_stock.example:
+#        class: Web\StockBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    web_stock.admin.model:
+        class: Web\StockBundle\Admin\ModelAdmin
+        arguments: [~, Web\StockBundle\Entity\Model, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Stock, label: Model}
+
+    web_stock.admin.yarn_in_stock:
+        class: Web\StockBundle\Admin\YarnInStockAdmin
+        arguments: [~, Web\StockBundle\Entity\YarnInStock, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Stock, label: YarnInStock}
+
+    web_stock.admin.item_in_stock:
+        class: Web\StockBundle\Admin\ItemInStockAdmin
+        arguments: [~, Web\StockBundle\Entity\ItemInStock, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Stock, label: ItemInStock}
+
+    web_stock.admin.size:
+        class: Web\StockBundle\Admin\SizeAdmin
+        arguments: [~, Web\StockBundle\Entity\Size, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Stock, label: Size}
+
+    web_stock.admin.country:
+        class: Web\StockBundle\Admin\CountryAdmin
+        arguments: [~, Web\StockBundle\Entity\Country, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Orders, label: Country}
+
+    web_stock.admin.shipment_variant:
+        class: Web\StockBundle\Admin\ShipmentVariantAdmin
+        arguments: [~, Web\StockBundle\Entity\ShipmentVariant, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Orders, label: ShipmentVariant}
+
+    web_stock.admin.item_order:
+        class: Web\StockBundle\Admin\ItemOrderAdmin
+        arguments: [~, Web\StockBundle\Entity\ItemOrder, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Orders, label: ItemOrder}
+
+    web_stock.admin.dispature_date:
+        class: Web\StockBundle\Admin\DispatureDateAdmin
+        arguments: [~, Web\StockBundle\Entity\DispatureDate, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Orders, label: DispatureDate}
+
+    web_stock.admin.address:
+        class: Web\StockBundle\Admin\AddressAdmin
+        arguments: [~, Web\StockBundle\Entity\Address, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Orders, label: Address}
+
+    app.cart_item_resolver:
+        class: Web\StockBundle\Cart\ItemResolver
+        arguments: [@doctrine.orm.entity_manager]

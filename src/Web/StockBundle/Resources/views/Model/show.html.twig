@@ -1,0 +1,98 @@
+{% extends "WebStockBundle::layout.html.twig" %}
+
+{% block body %}
+    {#{% for item in items %}#}
+    {#{{ item.size }}#}
+    {#<a href="{{ path('sylius_cart_item_add', {'productId': item.id}) }}">В корзину</a>#}
+
+    {#{% endfor %}#}
+    {#&#123;&#35; Надо продумать как отсюда выбирать ItemInStock с соответствующим размером и добавлять в корзину.#}
+    {#Сейчас тестируется вариант добавления Модели Model в корзину &#35;&#125;#}
+    {#<a href="{{ path('sylius_cart_item_add', {'productId': entity.id}) }}">В корзину</a>#}
+    <div class="row">
+        <!--Carousel-->
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                {% for galleryHasMedia in entity.gallery.GalleryHasMedias %}
+                    {% if loop.first %}
+                        <div class="item active">
+                            <img src="{% path galleryHasMedia.media, 'big' %}" alt="{{ entity.gallery.name }}">
+                            <div class="carousel-caption">
+                                {{ entity.name }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="item">
+                            <img src="{% path galleryHasMedia.media, 'big' %}" alt="{{ entity.gallery.name }}">
+                            <div class="carousel-caption">
+                                {{ entity.name }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                Здесь будут тумбнэйлы для увеличения
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Назад</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Вперед</span>
+            </a>
+        </div>
+        <!--End Carousel-->
+    </div>
+    <div class="row">
+        <h3 class="text-center section">Подробнее</h3>
+        {{ entity.description |raw (html) }}
+    </div>
+    <div class="row">
+{{ include ('WebStockBundle::feedbacks.html.twig') }}
+    </div>
+    <div class="row">
+        <h3 class="text-center section">Выберите цвет</h3>
+    </div>
+    <div class="row circleBlock">
+        <div class=""><a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}"><img class="activeColor" src="{% path entity.yarn.photo, 'small' %}" alt="{{ entity.yarn.color }}"></a></div>
+        {% for entity in entity.relatedModels %}
+            <div class=""><a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}"><img  class="" src="{% path entity.yarn.photo, 'small' %}" alt="{{ entity.yarn.color }}"></a></div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="text-center section"><h3>На рост</h3>
+            <div class="circleBlock">
+                {% for item in items %}
+                    <div class="box"> <a href="">
+                            <div class="circle">
+                                {{ item.size }}
+                                Готово к отправке
+                                {{ if  }}
+                            </div></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center row ">
+        <h3 class="section">Готово к отправке</h3>
+        <div class="circleDate text-center">
+            <div>Завтра</div>
+            <div class="secondLine">20 сентября 2015</div>
+        </div>
+    </div>
+{{ include ('WebStockBundle:Model:_order_button.html.twig') }}
+
+{% endblock %}

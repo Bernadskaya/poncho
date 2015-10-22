@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Web\StockBundle\Entity\YarnInStockRepository" name="Web\StockBundle\Entity\YarnInStock">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="title" type="string" column="Title" length="255"/>
+    <field name="titleENG" type="string" column="Title_ENG" length="255"/>
+    <field name="description" type="text" column="Description"/>
+    <field name="descriptionENG" type="text" column="Description_ENG"/>
+    <field name="color" type="string" column="Color" length="255"/>
+    <field name="colorENG" type="string" column="Color_ENG" length="255"/>
+    <field name="cost" type="integer" column="Cost"/>
+    <field name="weightInStock" type="integer" column="Weight_In_Stock"/>
+      <one-to-one field="photo" target-entity="\Ant\MediaBundle\Entity\Media">
+          <cascade><cascade-persist/></cascade>
+      </one-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Web\StockBundle\Entity\DispatureDate">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="toOrderDate" type="datetimetz" column="toOrderDate"/>
+    <field name="vacancyOrder" type="integer" column="vacancyOrder"/>
+    <field name="isOpen" type="boolean" column="isOpen"/>
+    <many-to-many field="itemOrders" target-entity="Web\StockBundle\Entity\ItemOrder">
+        <join-table name="dispatures_orders">
+            <join-columns>
+                <join-column name="itemOrder" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+            </join-columns>
+            <inverse-join-columns>
+                <join-column name="dispatureDate" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+            </inverse-join-columns>
+        </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

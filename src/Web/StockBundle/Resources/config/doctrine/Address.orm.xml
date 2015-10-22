@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Web\StockBundle\Entity\Address">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="firstName" type="string" column="firstName" length="255"/>
+    <field name="secondName" type="string" column="secondName" length="255"/>
+    <field name="email" type="string" column="email" length="255"/>
+    <field name="city" type="string" column="city" length="255"/>
+    <field name="addressFL" type="string" column="addressFL" length="255"/>
+    <field name="addressSL" type="string" column="addressSL" length="255"/>
+    <field name="phone" type="string" column="phone" length="255"/>
+    <field name="mobilePhone" type="string" column="mobilePhone" length="255"/>
+    <field name="addressType" type="string" column="addressType" length="255"/>
+    <many-to-one field="countryId" target-entity="Web\StockBundle\Entity\Country"/>
+  </entity>
+</doctrine-mapping>

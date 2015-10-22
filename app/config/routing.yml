@@ -1,0 +1,25 @@
+web_stock:
+    resource: "@WebStockBundle/Resources/config/routing.yml"
+    prefix:   /
+
+antweb:
+    resource: "@AntWebBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sylius_cart:
+    resource: @SyliusCartBundle/Resources/config/routing.yml
+    prefix: /cart
+
+page_delivery:
+    pattern: /{_locale}/delivery_payment
+    defaults: { _controller: "AntWebBundle:Page:show", id: "1" }
+page_about:
+    pattern: /{_locale}/about
+    defaults: { _controller: "AntWebBundle:Page:show", id: "2" }
+page_return:
+    pattern: /{_locale}/return
+    defaults: { _controller: "AntWebBundle:Page:show", id: "3" }
+#
+#sylius_addressing:
+#    resource: @SyliusAddressingBundle/Resources/config/routing.yml
+

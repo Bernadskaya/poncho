@@ -1,0 +1,9 @@
+menu:
+     collection: Collection
+     delivery: Delivery&Payment
+     return: Return policy
+     about: About us
+     cart: Cart
+     order: Ask fo order
+
+write_us_for_order: Ask us for order

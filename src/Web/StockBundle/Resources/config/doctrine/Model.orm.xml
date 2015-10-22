@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping">
+    <entity repository-class="Web\StockBundle\Entity\ModelRepository" name="Web\StockBundle\Entity\Model">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="name" type="string" column="Title" length="255"/>
+        <field name="titleENG" type="string" column="Title_ENG" length="255"/>
+        <field name="slug" type="string" length="156" unique="true">
+            <gedmo:slug unique="true" updatable="false" separator="-" fields="name"/>
+        </field>
+        <field name="slugENG" type="string" length="156" unique="true">
+            <gedmo:slug unique="true" updatable="false" separator="-" fields="titleENG"/>
+        </field>
+        <field name="description" type="string" column="Description" length="255"/>
+        <field name="descriptionENG" type="string" column="Description_ENG" length="255"/>
+        <field name="productionTime" type="integer" column="ProductionTime"/>
+        <field name="costRub" type="integer" column="cost_RUB"/>
+        <field name="costUsd" type="integer" column="cost_USD"/>
+        <one-to-one field="gallery" target-entity="Ant\MediaBundle\Entity\Gallery">
+            <join-column name="gallery_id" referenced-column-name="id" />
+            <cascade><cascade-persist/></cascade>
+        </one-to-one>
+        <many-to-one field="yarn" target-entity="\Web\StockBundle\Entity\YarnInStock">
+        </many-to-one>
+        <many-to-many field="relatedModels" target-entity="\Web\StockBundle\Entity\Model">
+            <join-table name="relatedModels_relatedModelsWithThis">
+                <join-columns>
+                    <join-column name="model_id" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="related_model_id" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+        <many-to-many field="size" target-entity="\Web\StockBundle\Entity\Size">
+            <join-table name="model_sizes">
+                <join-columns>
+                    <join-column name="model_id" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="sizes_id" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+    </entity>
+</doctrine-mapping>

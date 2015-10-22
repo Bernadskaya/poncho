@@ -1,0 +1,34 @@
+collection:
+    path:     /{_locale}
+    defaults: { _controller: WebStockBundle:Model:collection }
+    requirements:
+        _locale: ru|en
+
+show:
+    path:     /{_locale}/model/{id}/{slug}
+    defaults: { _controller: WebStockBundle:Model:show }
+    requirements:
+        _locale: ru|en
+
+collection_eng:
+    path:     /en/collection
+    defaults: { _controller: WebStockBundle:Model:collectionEng }
+
+show_eng:
+    path:     /model/en/{id}/{slugENG}
+    defaults: { _controller: WebStockBundle:Model:showEng }
+#cart:
+#    path:     /cart
+#    defaults: { _controller: WebStockBundle:Model:cart }
+#
+#cart_eng:
+#    path:     /en/cart
+#    defaults: { _controller: WebStockBundle:Model:cartEng }
+#
+#add_cart:
+#    path:     /addCart
+#    defaults: { _controller: WebStockBundle:Model:addCart }
+#
+#clear_cart:
+#    path:     /clearCart
+#    defaults: { _controller: WebStockBundle:Model:clearCart }

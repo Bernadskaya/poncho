@@ -1,0 +1,4 @@
+sylius:
+     cart:
+        summary:
+            product: Продукт

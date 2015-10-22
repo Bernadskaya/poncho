@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Web\StockBundle\Entity\itemOrder">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="status" type="string" column="status" length="255"/>
+    <field name="summaryCost" type="integer" column="summaryCost"/>
+    <field name="paymentDate" type="string" column="paymentDate" length="255"/>
+    <field name="realShipmentCost" type="integer" column="realShipmentCost"/>
+      <many-to-one target-entity="Web\StockBundle\Entity\ShipmentVariant" field="shipmentVariantId"/>
+      <many-to-one target-entity="Web\StockBundle\Entity\Address" field="shippingAddressId"/>
+      <many-to-one target-entity="Web\StockBundle\Entity\Address" field="billingAddressId"/>
+      <many-to-many field="items" target-entity="\Web\StockBundle\Entity\ItemInStock">
+          <join-table name="orders_items">
+              <join-columns>
+                  <join-column name="itemOrder_id" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+              </join-columns>
+              <inverse-join-columns>
+                  <join-column name="itemsInStock_id" referenced-column-name="id"  on-update="CASCADE" on-delete="CASCADE"/>
+              </inverse-join-columns>
+          </join-table>
+      </many-to-many>
+  </entity>
+</doctrine-mapping>

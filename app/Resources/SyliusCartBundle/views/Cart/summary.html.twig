@@ -1,0 +1,80 @@
+{% extends "WebStockBundle::layout.html.twig" %}
+
+{% trans_default_domain "WebStockBundle" %}
+{#{% import 'SyliusWebBundle:Frontend/Macros:alerts.html.twig' as alerts %}#}
+
+{% form_theme form _self %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts output='assets/compiled/frontend_cart_summary.js'
+    'bundles/syliusweb/js/form-collection.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'sylius.cart.summary_header'|trans|raw }}</h1>
+    </div>
+
+    {% if not cart.empty %}
+        {{ form_errors(form) }}
+
+        <form action="{{ path('sylius_cart_save') }}" method="post" novalidate>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{ 'sylius.cart.summary.product'|trans }}</th>
+                    <th>Описание</th>
+                    <th>Размер</th>
+                    <th>{{ 'sylius.cart.summary.unit_price'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cart.items %}
+                    <tr>
+                        <th>
+                            {{ render(controller('AntMediaBundle:Gallery:thumb', { 'id': item.product.gallery|sonata_urlsafeid } )) }}
+                        </th>
+                        <th><a href="{{ path('show', { 'slug': item.product.slug, 'id': item.product.id }) }}">{{ item.product.name }}</a></th>
+                        <th>Высокий</th>
+                        <th>{{ item.unitPrice }} р.</th>
+                    </tr>
+                    <tr>
+                        <th colspan="4" class="text-right text-muted delete"><a href="">Удалить из корзины</a> </th>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="3" >{{ 'sylius.cart.summary.grand_total'|trans }}</th>
+                    <th> {{ cart.total }} р.</th>
+                </tr>
+                </tfoot>
+            </table>
+
+
+            {{ form_rest(form) }}
+            <div class="well">
+                <button type="submit" class="btn btn-primary btn-lg"><i class="icon-save"></i> {{ 'sylius.cart.summary.save'|trans }}</button>
+                <div class="pull-right">
+                    {#<a href="{{ path('sylius_checkout_start') }}" class="btn btn-success btn-lg"><i class="icon-shopping-cart"></i> {{ 'sylius.cart.summary.checkout'|trans }}</a>#}
+                    <a href="{{ path('sylius_cart_clear') }}" class="btn btn-danger btn-lg"><i class="icon-remove"></i> {{ 'sylius.cart.summary.clear'|trans }}</a>
+                </div>
+            </div>
+        </form>
+    {% else %}
+        {#{{ alerts.info('sylius.cart.empty'|trans) }}#}
+    {% endif %}
+
+{% endblock %}
+
+{% block sylius_cart_item_row %}
+    {#{{ parent() }}#}
+    {% block form_message %}{% endblock %}
+{% endblock %}
