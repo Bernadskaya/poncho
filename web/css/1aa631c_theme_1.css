@@ -1,0 +1,237 @@
+body {
+    font-family: "Helvetica Neue Light", "Helvetica", "Tahoma", "Arial";
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #847567;
+    text-decoration: none;
+}
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+h3, h2, h4 {
+    font-family: "Helvetica Neue Light", "Helvetica", "Tahoma", "Arial";
+font-weight: 300;
+}
+
+.section {
+    margin: 50px 0;
+}
+
+.sky {
+    color: #b7dde8;
+}
+
+.teaMilk {
+    color: #847567;
+}
+
+.circleBlock div a img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    text-align: center;
+}
+.circleBlock div a:hover img {
+    border: #b7dde8 solid 10px;
+}
+
+.activeColor {
+    border: #b7dde8 solid 10px;
+}
+
+.circleDate {
+    height: 280px;
+    width: 280px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: #847567 solid 1px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 2em;
+    color: #847567;
+    font-family:"Garamond", "Times New Roman";
+    font-style: italic;
+    margin: 0 auto 30px;
+    line-height: 170px;
+
+}
+.circle {
+    height: 150px;
+    width: 150px;
+    background-color: #fff;
+    border: solid 1px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    line-height: 130px;
+}
+.circleBlock {
+    display: flex;
+}
+
+.circleBlock div {
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+.secondLine {
+    line-height: 0;
+}
+
+.circleBlock a {
+    font-size: 1.5em;
+    color: #847567;
+    font-family: "GARAMOND PRO", "Times New Roman";
+    font-style: italic;
+    font-weight: 300;
+    display: flex;
+    height: 150px;
+    width: 150px;
+
+}
+
+.box {
+    display: flex;
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.circle:hover {
+    background-color: #847567;
+    color: #ffffff;
+}
+.circle:hover a {
+    color: #ffffff;
+}
+
+.skyCircle {
+    height: 280px;
+    width: 280px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: #b7dde8;
+    margin: 0 auto 30px;
+    display: block;
+    font-size: 2em;
+    line-height: 180px;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.priceList {
+    font-weight: 300;
+    font-size: 2em;
+color: #847567;
+}
+
+.base {
+    margin-top: 200px;
+}
+.navbar-nav {
+    font-size: 1.2em;
+    font-family: "Garamond", "Times New Roman";
+    font-style: italic;
+    line-height: 100px;
+    margin: 50px;
+}
+
+.navbar-nav li a:hover {
+background: #ffffff;
+    color: #847567;
+}
+
+.carousel-control.left {
+    background-image: none;
+}
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    background-image: none;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: 50%;
+    top: 30%;
+    left: 10%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #847567;
+    text-align: left;
+font-size: 3em;
+    text-shadow: none;
+    font-weight: 300;
+
+}
+
+footer {
+    margin: 50px 0 0;
+    background-color: #847567;
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+.img-thumbnail {
+    border-radius: 10px;
+    border: 0 solid;
+}
+
+.cart {
+    border-radius: 50%;
+    background-color: #b7dde8;
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+    color: #000000;
+    padding: 15px;
+    line-height: 60px;
+}
+
+.cart i {
+    width: 30px;
+    height: 30px;
+}
+
+label {
+ font-weight: normal;
+}
+
+.table tbody tr th, .table thead tr th {
+    border: 0;
+}
+
+.table thead tr th {
+    color: #847567;
+    font-weight: 300;
+}
+.table tbody tr th {
+    font-weight: 300;
+}

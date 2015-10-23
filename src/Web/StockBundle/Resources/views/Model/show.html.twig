@@ -1,6 +1,7 @@
-{% extends "WebStockBundle::layout.html.twig" %}
+{% extends "WebBundle::layout.html.twig" %}
 
 {% block body %}
+    {% trans_default_domain "WebStockBundle" %}
     {#{% for item in items %}#}
     {#{{ item.size }}#}
     {#<a href="{{ path('sylius_cart_item_add', {'productId': item.id}) }}">В корзину</a>#}
@@ -55,30 +56,31 @@
         <!--End Carousel-->
     </div>
     <div class="row">
-        <h3 class="text-center section">Подробнее</h3>
+        <h3 class="text-center section">{% trans %}show.more{% endtrans %}</h3>
         {{ entity.description |raw (html) }}
+        {{ cost }} {{ currency }}
     </div>
     <div class="row">
 {{ include ('WebStockBundle::feedbacks.html.twig') }}
     </div>
     <div class="row">
-        <h3 class="text-center section">Выберите цвет</h3>
+        <h3 class="text-center section">{% trans %}show.colors{% endtrans %}</h3>
     </div>
+    {% if entity.relatedModels %}
     <div class="row circleBlock">
         <div class=""><a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}"><img class="activeColor" src="{% path entity.yarn.photo, 'small' %}" alt="{{ entity.yarn.color }}"></a></div>
         {% for entity in entity.relatedModels %}
             <div class=""><a href="{{ path('show', { 'slug': entity.slug, 'id': entity.id }) }}"><img  class="" src="{% path entity.yarn.photo, 'small' %}" alt="{{ entity.yarn.color }}"></a></div>
         {% endfor %}
     </div>
+        {% endif %}
     <div class="row">
-        <div class="text-center section"><h3>На рост</h3>
+        <div class="text-center section"><h3>{% trans %}show.sizes{% endtrans %}</h3>
             <div class="circleBlock">
                 {% for item in items %}
                     <div class="box"> <a href="">
                             <div class="circle">
                                 {{ item.size }}
-                                Готово к отправке
-                                {{ if  }}
                             </div></a>
                     </div>
                 {% endfor %}
@@ -87,7 +89,7 @@
     </div>
 
     <div class="text-center row ">
-        <h3 class="section">Готово к отправке</h3>
+        <h3 class="section">{% trans %}show.shipment{% endtrans %}</h3>
         <div class="circleDate text-center">
             <div>Завтра</div>
             <div class="secondLine">20 сентября 2015</div>

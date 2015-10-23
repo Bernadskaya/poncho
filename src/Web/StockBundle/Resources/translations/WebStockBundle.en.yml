@@ -6,4 +6,10 @@ menu:
      cart: Cart
      order: Ask fo order
 
-write_us_for_order: Ask us for order
+
+show:
+    more: About
+    colors: Colors
+    sizes: Size & Fit
+    shipment: Ready to ship
+    order: Order

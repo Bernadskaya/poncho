@@ -16,4 +16,9 @@ sylius:
             clear: Очистить корзину
         summary_header: У вас в корзине замечательные вещи
 
-write_us_for_order: Напишите нам для заказа
+show:
+    more: Подробнее
+    colors: Цвета
+    sizes: Размеры
+    shipment: Готово к отправке
+    order: Напишите нам для заказа

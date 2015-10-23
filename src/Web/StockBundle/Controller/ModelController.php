@@ -7,31 +7,46 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ModelController extends Controller
 {
-    public function collectionAction(Request $request)
+    public function collectionAction()
     {
 
         $em = $this->getDoctrine()->getManager();
 
         $repository = $em->getRepository('WebStockBundle:Model');
 
-        $locale = $request->getLocale();
+
         $entities = $repository->findAll();
         return $this->render('WebStockBundle:Model:collection.html.twig', array(
             'entities' => $entities
             ));
     }
 
-    public function showAction($id,$slug)
+    public function showAction($id,$slug, Request $request, $currency = null)
     {
         $em = $this->getDoctrine();
         $entity = $em->getRepository('WebStockBundle:Model')->find($id);
         $items = $em->getRepository('WebStockBundle:ItemInStock')->findByModel($id);
+
+        $locale = $request->getLocale();
+
+        if ($locale === 'ru') {
+            $cost = $entity->getCostRub();
+            $currency = 'руб';
+        }
+        else {
+            $cost = $entity->getCostUsd();
+            $currency = 'USD';
+
+        }
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Model entity.');
         }
         return $this->render('WebStockBundle:Model:show.html.twig', array(
             'entity'      => $entity,
-            'items'       => $items
+            'items'       => $items,
+            'cost'        => $cost,
+            'currency'    => $currency
         ));    }
 
     public function collectionEngAction()

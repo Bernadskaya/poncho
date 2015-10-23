@@ -13,12 +13,18 @@ sylius_cart:
 page_delivery:
     pattern: /{_locale}/delivery_payment
     defaults: { _controller: "AntWebBundle:Page:show", id: "1" }
+    requirements:
+        _locale: en|ru
 page_about:
     pattern: /{_locale}/about
     defaults: { _controller: "AntWebBundle:Page:show", id: "2" }
+    requirements:
+        _locale: en|ru
 page_return:
     pattern: /{_locale}/return
     defaults: { _controller: "AntWebBundle:Page:show", id: "3" }
+    requirements:
+        _locale: en|ru
 #
 #sylius_addressing:
 #    resource: @SyliusAddressingBundle/Resources/config/routing.yml

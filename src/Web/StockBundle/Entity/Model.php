@@ -42,7 +42,7 @@ class Model
     private $size;
 
 /**
-* @var \Doctrine\Common\Collections\ArrayCollection $sizes
+*
 */
     private $sizes;
     /**

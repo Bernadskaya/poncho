@@ -3,9 +3,9 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
         ROLE_ADMIN:
             - ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
         # for convenience, I decided to gather Sonata roles here
         ROLE_USER:
             # USER can only edit existing ads
